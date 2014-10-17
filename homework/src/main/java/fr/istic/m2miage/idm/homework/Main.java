@@ -54,7 +54,7 @@ public class Main {
             }
             
             // Same query : Create a ResultQuery object and execute it, fetching results:
-            ResultQuery<Record> resultQuery2 = ctx.resultQuery("SELECT * FROM HOMEWORK");
+            ResultQuery<Record> resultQuery2 = ctx.resultQuery("SELECT * FROM HOMEWORK where description = 'IDM Homework' order by title");
             Result<Record> results = resultQuery2.fetch();
             for (Record r : results) {
                 Long id = r.getValue(HOMEWORK.ID);
@@ -71,7 +71,6 @@ public class Main {
             System.out.println("Left data cnt : " + ctx.fetchCount(HOMEWORK));
             
         } catch (Exception e) {
-            // For the sake of this tutorial, let's keep exception handling simple
             e.printStackTrace();
         } finally {
             if (conn != null) {
